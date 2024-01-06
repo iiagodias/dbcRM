@@ -3,4 +3,5 @@ export interface ICharacter {
   species: string;
   status: string;
   image: string;
+  id: number;
 }

@@ -8,41 +8,64 @@ import { GET_CHARACTERS } from '../../services/querysApollo';
 import { ICharacter } from '../../types/characters';
 import { Container, Title } from './styles';
 
-interface IGetCharacters {
-  loading: boolean;
-  data?: { characters: { results: ICharacter[] } };
-}
-
 const Home: React.FC = () => {
   const [searchText, setSearchText] = useState<string>('');
+  const [page, setPage] = useState<number>(1);
 
-  const { loading, data }: IGetCharacters = useQuery(GET_CHARACTERS, {
+  const { loading, data, fetchMore } = useQuery(GET_CHARACTERS, {
     variables: { page: 1, filter: searchText },
   });
 
-  const isNotFound = data?.characters?.results.length === 0;
+  console.log(data);
 
-  console.log(isNotFound);
+  const isNotFound = data?.characters?.results?.length === 0 && !loading;
 
   const renderItem = ({ item }: { item: ICharacter }): ReactElement => {
     return <CardCharacter character={item} />;
   };
 
+  const onSearch = (text: string): void => {
+    setPage(1);
+    setSearchText(text);
+  };
+
+  const onPaginate = (): void => {
+    if (loading) {
+      return;
+    }
+
+    fetchMore({
+      variables: {
+        page: page + 1,
+      },
+
+      updateQuery: (prev, { fetchMoreResult }) => {
+        fetchMoreResult.characters.results = [
+          ...prev.characters.results,
+          ...fetchMoreResult.characters.results,
+        ];
+        return fetchMoreResult;
+      },
+    });
+
+    setPage(prevState => prevState + 1);
+  };
+
   return (
     <Container>
-      <InputSearch onSearch={text => setSearchText(text)} />
+      <InputSearch onSearch={onSearch} />
 
       {!!isNotFound && <Title>No characters found!</Title>}
 
-      {!loading ? (
-        <FlashList
-          data={data?.characters?.results}
-          renderItem={renderItem}
-          estimatedItemSize={200}
-        />
-      ) : (
-        <Loading />
-      )}
+      <FlashList
+        data={data?.characters?.results}
+        renderItem={renderItem}
+        keyExtractor={item => String(item.id)}
+        estimatedItemSize={200}
+        onEndReached={onPaginate}
+      />
+
+      {loading && <Loading />}
     </Container>
   );
 };

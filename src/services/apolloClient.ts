@@ -3,7 +3,15 @@ import { uriGraphQL } from '../constants/urls';
 
 const clientApollo = new ApolloClient({
   uri: uriGraphQL,
-  cache: new InMemoryCache(),
+  cache: new InMemoryCache({
+    typePolicies: {
+      Query: {
+        fields: {
+          characters: {},
+        },
+      },
+    },
+  }),
 });
 
 export default clientApollo;

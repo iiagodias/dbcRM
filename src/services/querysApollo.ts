@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
 
 export const GET_CHARACTERS = gql`
-  query GetCharacters($page: Int!, $filter: String) {
+  query GetCharacters($page: Int, $filter: String) {
     characters(page: $page, filter: { name: $filter }) {
       info {
         count
@@ -11,6 +11,7 @@ export const GET_CHARACTERS = gql`
         species
         status
         image
+        id
       }
     }
   }
