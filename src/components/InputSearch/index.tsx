@@ -8,14 +8,14 @@ interface IInputSearch {
 }
 
 const InputSearch: React.FC<IInputSearch> = ({ onSearch }) => {
-  const [value, onChangeValue] = useState('');
+  const [value, onChangeValue] = useState<string>('');
   const theme = useTheme();
 
-  const onClearText = () => {
+  const onClearText = (): void => {
     onChangeValue('');
   };
 
-  const onSubmit = () => {
+  const onSubmit = (): void => {
     onSearch(value);
   };
 

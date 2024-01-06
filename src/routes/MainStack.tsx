@@ -4,7 +4,12 @@ import { useTheme } from 'styled-components';
 import Details from '../screens/Details';
 import Home from '../screens/Home';
 
-const Stack = createStackNavigator();
+type MainStackParamList = {
+  Home: undefined;
+  Details: undefined;
+};
+
+const Stack = createStackNavigator<MainStackParamList>();
 
 const MainStacks: React.FC = () => {
   const theme = useTheme();

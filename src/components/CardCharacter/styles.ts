@@ -30,11 +30,12 @@ export const BoxText = styled.View`
 `;
 
 export const BoxSpace = styled.View`
-  justify-content: space-between;
   flex-direction: row;
 `;
 
-export const Box = styled.View``;
+export const Box = styled.View`
+  flex: 1;
+`;
 
 export const Title = styled.Text`
   color: ${({ theme }) => theme.white};

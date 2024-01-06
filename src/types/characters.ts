@@ -1,0 +1,6 @@
+export interface ICharacter {
+  name: string;
+  species: string;
+  status: string;
+  image: string;
+}

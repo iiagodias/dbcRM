@@ -1,4 +1,10 @@
+import {
+  NavigationProp,
+  ParamListBase,
+  useNavigation,
+} from '@react-navigation/native';
 import React from 'react';
+import { ICharacter } from '../../types/characters';
 import ButtonFavorite from '../ButtonFavorite';
 import {
   Box,
@@ -13,14 +19,24 @@ import {
   Title,
 } from './styles';
 
-const CardCharacter: React.FC = () => {
+interface ICardCharacter {
+  character: ICharacter;
+}
+
+const CardCharacter: React.FC<ICardCharacter> = ({ character }) => {
+  const navigation: NavigationProp<ParamListBase> = useNavigation();
+
+  const onNavigate = (): void => {
+    navigation.navigate('Details');
+  };
+
   return (
-    <Container>
+    <Container onPress={onNavigate}>
       <BoxRow>
         <BoxImage>
           <Image
             source={{
-              uri: 'https://img.elo7.com.br/product/360x360/2C8D2AA/painel-1x0-65-rick-e-morty-personalizado.jpg',
+              uri: character.image,
             }}
           />
         </BoxImage>
@@ -28,8 +44,8 @@ const CardCharacter: React.FC = () => {
           <BoxText>
             <BoxSpace>
               <Box>
-                <Title>Guerry</Title>
-                <Description>Ele eé veroz</Description>
+                <Title numberOfLines={1}>{character.name}</Title>
+                <Description>{character.species}</Description>
               </Box>
               <ButtonFavorite />
             </BoxSpace>
