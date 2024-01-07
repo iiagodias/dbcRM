@@ -13,8 +13,6 @@ export const insertAndRemoveToListFavorite = (
 ): ICharacter[] => {
   const hasFavorite = isFavorite(character, favoritesCharacters);
 
-  console.log(character);
-
   if (hasFavorite) {
     return favoritesCharacters.filter(item => item.id !== character.id);
   }
