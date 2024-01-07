@@ -15,7 +15,7 @@ const BottomTab: React.FC = () => {
     route: RouteProp<ParamListBase, keyof ParamListBase>,
     focused: boolean,
   ) => {
-    let icon = null;
+    let icon;
     switch (route.name) {
       case 'Favorite':
         icon = (
@@ -26,7 +26,7 @@ const BottomTab: React.FC = () => {
           />
         );
         break;
-      case 'HomeTab':
+      case 'Home':
         icon = (
           <Icon
             name="home"
@@ -54,7 +54,7 @@ const BottomTab: React.FC = () => {
         tabBarIcon: ({ focused }) => renderIcon(route, focused),
       })}>
       <Tab.Screen
-        name="HomeTab"
+        name="Home"
         component={MainStacks}
         options={{
           headerShown: false,

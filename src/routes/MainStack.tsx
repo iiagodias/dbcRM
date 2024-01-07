@@ -6,7 +6,7 @@ import Home from '../screens/Home';
 import { ICharacter } from '../types/characters';
 
 export type MainStackParamList = {
-  Home: undefined;
+  HomeStack: undefined;
   Details: { character: ICharacter };
 };
 
@@ -25,7 +25,13 @@ const MainStacks: React.FC = () => {
         headerTintColor: theme.white,
         headerBackTitleVisible: false,
       }}>
-      <Stack.Screen name="Home" component={Home} />
+      <Stack.Screen
+        name="HomeStack"
+        options={{
+          title: 'Home',
+        }}
+        component={Home}
+      />
       <Stack.Screen name="Details" component={Details} />
     </Stack.Navigator>
   );

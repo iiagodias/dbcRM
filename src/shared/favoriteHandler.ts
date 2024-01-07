@@ -4,7 +4,7 @@ export const isFavorite = (
   character: ICharacter,
   favoritesCharacters: ICharacter[],
 ) => {
-  return favoritesCharacters.find(item => item.id === character.id);
+  return Boolean(favoritesCharacters.find(item => item.id === character.id));
 };
 
 export const insertAndRemoveToListFavorite = (
