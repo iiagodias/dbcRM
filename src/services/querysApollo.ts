@@ -12,6 +12,7 @@ export const GET_CHARACTERS = gql`
         status
         image
         id
+        gender
       }
     }
   }

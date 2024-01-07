@@ -27,7 +27,7 @@ const CardCharacter: React.FC<ICardCharacter> = ({ character }) => {
   const navigation: NavigationProp<ParamListBase> = useNavigation();
 
   const onNavigate = (): void => {
-    navigation.navigate('Details');
+    navigation.navigate('Details', { character });
   };
 
   return (

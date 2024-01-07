@@ -3,10 +3,11 @@ import React from 'react';
 import { useTheme } from 'styled-components';
 import Details from '../screens/Details';
 import Home from '../screens/Home';
+import { ICharacter } from '../types/characters';
 
-type MainStackParamList = {
+export type MainStackParamList = {
   Home: undefined;
-  Details: undefined;
+  Details: { character: ICharacter };
 };
 
 const Stack = createStackNavigator<MainStackParamList>();

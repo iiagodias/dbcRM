@@ -4,4 +4,6 @@ export default {
   white: '#FFFF',
   silver: '#8f9294',
   silver050: '#1f2c3c',
+  red: '#e74c3c',
+  green: '#2ecc71',
 };

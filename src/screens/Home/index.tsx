@@ -16,12 +16,10 @@ const Home: React.FC = () => {
     variables: { page: 1, filter: searchText },
   });
 
-  console.log(data);
-
   const isNotFound = data?.characters?.results?.length === 0 && !loading;
 
   const renderItem = ({ item }: { item: ICharacter }): ReactElement => {
-    return <CardCharacter character={item} />;
+    return <CardCharacter character={item} key={item.id} />;
   };
 
   const onSearch = (text: string): void => {

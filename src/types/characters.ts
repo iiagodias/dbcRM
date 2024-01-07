@@ -4,4 +4,5 @@ export interface ICharacter {
   status: string;
   image: string;
   id: number;
+  gender: string;
 }
