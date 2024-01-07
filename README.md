@@ -56,6 +56,13 @@ Caso seja android
   yarn android
 ```
 
+Rodando os testes
+
+```bash
+  yarn test
+```
+
+
 
 ## Stack utilizada
 
