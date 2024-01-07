@@ -44,7 +44,7 @@ const Details: React.FC = () => {
             <Description>{character.status}</Description>
           </BoxRow>
         </BoxText>
-        <ButtonFavorite />
+        <ButtonFavorite character={character} />
       </BoxInfo>
     </Container>
   );

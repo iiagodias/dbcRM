@@ -47,7 +47,7 @@ const CardCharacter: React.FC<ICardCharacter> = ({ character }) => {
                 <Title numberOfLines={1}>{character.name}</Title>
                 <Description>{character.species}</Description>
               </Box>
-              <ButtonFavorite />
+              <ButtonFavorite character={character} />
             </BoxSpace>
           </BoxText>
         </BoxInfo>

@@ -1,11 +1,11 @@
 import { NavigationContainer } from '@react-navigation/native';
 import * as React from 'react';
-import MainStacks from './MainStack';
+import BottomTab from './BottomTab';
 
 export default function MainNavigator() {
   return (
     <NavigationContainer>
-      <MainStacks />
+      <BottomTab />
     </NavigationContainer>
   );
 }

@@ -1,7 +1,8 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+import { ICharacter } from '../types/characters';
 
 export interface FavoriteState {
-  favoritesCharacters: [];
+  favoritesCharacters: ICharacter[];
 }
 
 const initialState: FavoriteState = {
@@ -12,7 +13,9 @@ const favoriteSlice = createSlice({
   name: 'favoriteReducer',
   initialState,
   reducers: {
-    setFavoriteCharacters: () => {},
+    setFavoriteCharacters: (state, action: PayloadAction<ICharacter[]>) => {
+      state.favoritesCharacters = action.payload;
+    },
   },
 });
 
